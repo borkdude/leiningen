@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export LEIN_VERSION="2.0.0-preview5"
+export LEIN_VERSION="2.0.0-SNAPSHOT"
 
 case $LEIN_VERSION in
     *SNAPSHOT) SNAPSHOT="YES" ;;
@@ -210,6 +210,7 @@ else
         -client -XX:+TieredCompilation \
         $LEIN_JVM_OPTS \
         -Dfile.encoding=UTF-8 \
+        -Dmaven.wagon.http.ssl.easy=false \
         -Dleiningen.original.pwd="$ORIGINAL_PWD" \
         -Dleiningen.trampoline-file=$TRAMPOLINE_FILE \
         -cp "$CLASSPATH" \
