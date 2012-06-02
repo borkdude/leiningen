@@ -4,7 +4,6 @@
   (:require [clojure.walk :as walk]
             [clojure.java.io :as io]
             [clojure.set :as set]
-            [clojure.string :as string]
             [ordered.map :as ordered]
             [cemerick.pomegranate :as pomegranate]
             [leiningen.core.user :as user]
@@ -32,11 +31,8 @@
                :repositories (ordered/ordered-map
                               "central" {:url "http://repo1.maven.org/maven2"}
                               ;; TODO: point to releases-only before 2.0 is out
-                              "clojars" {:url (if (= "windows"
-                                                     (-> (System/getProperty "os.name")
-                                                         string/lower-case
-                                                         (string/split #" ")
-                                                         first))
+                              "clojars" {:url (if (= "Windows"
+                                                     (System/getProperty "os.name"))
                                                 "http://clojars.org/repo/"
                                                 "https://clojars.org/repo/")})
                :jar-exclusions [#"^\."]
